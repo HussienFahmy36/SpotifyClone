@@ -1,0 +1,877 @@
+{
+  "message": "Popular Playlists",
+  "playlists": {
+    "href": "https://api.spotify.com/v1/browse/featured-playlists?country=EG&timestamp=2023-10-28T18%3A01%3A33&offset=0&limit=50",
+    "items": [
+      {
+        "collaborative": false,
+        "description": "أجمد المهرجانات في مصر🔥 \n كوفر: <a href=\"https://open.spotify.com/artist/6Ss3HQTUk6PeyD1a0IV6RB?si=5pOYTLVwR4uoTuzhcAmH5Q\"> كريم كرستيانو </a> ",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX4qF0846GNk8"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX4qF0846GNk8",
+        "id": "37i9dQZF1DX4qF0846GNk8",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000003853f2bc635817bcd70cb451e",
+            "width": null
+          }
+        ],
+        "name": "أقوى المهرجانات",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5ODMzNDc2MiwwMDAwMDAwMDMyODljYTA0NjA5ZWViZmI5ZTczNDVlZmU5ZDNlYjY0",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX4qF0846GNk8/tracks",
+          "total": 48
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX4qF0846GNk8"
+      },
+      {
+        "collaborative": false,
+        "description": "فايب ومتعة وأغاني! 😌🎶 كوفر:  <a href=\"https://open.spotify.com/artist/2PM82jOCB674w4BL08zFVS?si=bhhYDaJ2Ro-WXJcv9PCxvg\"> مُسلِم </a>",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWYHBENPjyDpc"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWYHBENPjyDpc",
+        "id": "37i9dQZF1DWYHBENPjyDpc",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000003192cbd09850dd8057aa78307",
+            "width": null
+          }
+        ],
+        "name": "روقان",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5ODMzMzY2MiwwMDAwMDAwMDFhNWNjODE3YWY2MjI5ZmVkZjcyM2FhNWUxMDhhYmM1",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWYHBENPjyDpc/tracks",
+          "total": 75
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DWYHBENPjyDpc"
+      },
+      {
+        "collaborative": false,
+        "description": "ترند الموسم📱 غلاف:<a href=\"https://open.spotify.com/artist/2N72bJ8IYB4KZmKmxz5Xkk?si=sJn2KFuRRgegsIHk30qDGQ\"> حمزة نمرة </a>",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DXaGui85Swluy"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXaGui85Swluy",
+        "id": "37i9dQZF1DXaGui85Swluy",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000003556674522ea413901906e142",
+            "width": null
+          }
+        ],
+        "name": "اغاني ترند",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5ODMzNDQ3MiwwMDAwMDAwMGJhNjFjYmE1YzA5Mzk5NDM3MWE4MjQ2OGExNmI5MzEw",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXaGui85Swluy/tracks",
+          "total": 50
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DXaGui85Swluy"
+      },
+      {
+        "collaborative": false,
+        "description": "أفضل الأغاني المصرية الآن من قلب مصر إلى العالم🔥🔝. الغلاف: <a href=\"https://open.spotify.com/artist/6MQnUjIjnIOfHDFzqBJOAl?si=czcMFKrTRnmXGbAlkj7pGg\">   أصالة </a>",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DXd3AhRYJnfcl"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXd3AhRYJnfcl",
+        "id": "37i9dQZF1DXd3AhRYJnfcl",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000003a9001e845ffd0d3a9ffb3eb2",
+            "width": null
+          }
+        ],
+        "name": "التوب",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5ODMzNDM1OSwwMDAwMDAwMDFkOGIyNzg0NGZmZmI2ZTIyZTAwYzFkMjM1ZTdmOWI3",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXd3AhRYJnfcl/tracks",
+          "total": 50
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DXd3AhRYJnfcl"
+      },
+      {
+        "collaborative": false,
+        "description": "أغاني للرقص وبس💃🏻 الغلاف: <a href=\"https://open.spotify.com/artist/2KJgliIl1dMyeOMyCcnYv7?si=yFTFnY7VQW-43gfei43Eqw\"> بهاء سلطان </a>",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWVouaSVHTvw2"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWVouaSVHTvw2",
+        "id": "37i9dQZF1DWVouaSVHTvw2",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000003e9268f03b2783520a1cdf253",
+            "width": null
+          }
+        ],
+        "name": "رقص وفرفشه",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5ODMzMzQzMCwwMDAwMDAwMGMxNGNhM2E4NjViMjY0NTY5ODFhZTc2YjdhZDUwODg5",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWVouaSVHTvw2/tracks",
+          "total": 75
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DWVouaSVHTvw2"
+      },
+      {
+        "collaborative": false,
+        "description": "عيش أجمل حالة حب 🫶❤️\n كوفر: <a href=\"https://open.spotify.com/artist/0IiR4LJwslf6HBSdk9W3Dg?si=SaDgQlWvTb2aXAi94J-UOA\"> انغام </a>",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWYFV1CnuXO8v"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWYFV1CnuXO8v",
+        "id": "37i9dQZF1DWYFV1CnuXO8v",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000003bf6faf64384bb286d75aa2b7",
+            "width": null
+          }
+        ],
+        "name": "حب وغرام",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5ODMzMzcxMiwwMDAwMDAwMDJiODJjODgxODIxMDRjYWIzYzk0NmM3MTQ4N2JkNmMy",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWYFV1CnuXO8v/tracks",
+          "total": 75
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DWYFV1CnuXO8v"
+      },
+      {
+        "collaborative": false,
+        "description": "!لكل قلب مكسور؟ هذه البلاي ليست مناسبة لك \n",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX2siSxlNkZrf"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX2siSxlNkZrf",
+        "id": "37i9dQZF1DX2siSxlNkZrf",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f0000000338563d693a2e81b2375d3f3e",
+            "width": null
+          }
+        ],
+        "name": "ساعة الفراق",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5ODMzMzEwMCwwMDAwMDAwMDlhZDhjMmE2OGQwZWQzOTIzMjgzZjE4M2RlOTQyZjhj",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX2siSxlNkZrf/tracks",
+          "total": 75
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX2siSxlNkZrf"
+      },
+      {
+        "collaborative": false,
+        "description": "أنت مضايق النهارده، عارفين إزاي الإحساس؟ 😕\n\n\n\n\n",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWWP4NReKr24W"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWWP4NReKr24W",
+        "id": "37i9dQZF1DWWP4NReKr24W",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000003a81782d31575cf75d26edadc",
+            "width": null
+          }
+        ],
+        "name": "خزان أحزان",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5ODMzMjEwOSwwMDAwMDAwMDgwNzUyMjJjMjk2MTdhNWU4ZjBjMGI0MmVkNGY5MTI2",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWWP4NReKr24W/tracks",
+          "total": 75
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DWWP4NReKr24W"
+      },
+      {
+        "collaborative": false,
+        "description": "<a href=\"https://open.spotify.com/artist/7yBuSjd5Z3w7acodk51evR?si=NCDLeoLkTPiSgYtBdEOq-Q\"> Afroto </a> : عشان تثبتلي انك ليبرو تيجي تسمع ملوك السين. غلاف\n\n\n",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWZyonhntyFxW"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWZyonhntyFxW",
+        "id": "37i9dQZF1DWZyonhntyFxW",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000003fd0bf3560e2425c64de19be7",
+            "width": null
+          }
+        ],
+        "name": "ملوك السين",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5Nzk4MjkyMSwwMDAwMDAwMGFhM2M4YmEyOGVhZDg1MjBkMGJmNWMyYzYxMzc0NjJh",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWZyonhntyFxW/tracks",
+          "total": 40
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DWZyonhntyFxW"
+      },
+      {
+        "collaborative": false,
+        "description": "استمتع بالأغاني وانسى الزحمة! 🎶🚗",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DXdcjKKBPqh1t"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXdcjKKBPqh1t",
+        "id": "37i9dQZF1DXdcjKKBPqh1t",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000003201f7fbd3864d4cc0ffefd50",
+            "width": null
+          }
+        ],
+        "name": " معاك في الزحمه",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5NzE4MTM2OSwwMDAwMDAwMDM4ZWEwN2U0NjhlNzk4MmIxODFmZTVkZjVkODQ3OTM3",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXdcjKKBPqh1t/tracks",
+          "total": 77
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DXdcjKKBPqh1t"
+      },
+      {
+        "collaborative": false,
+        "description": " خليك رايق مع الراب المصري 😴 كوفر: <a href=\"https://open.spotify.com/artist/7yBuSjd5Z3w7acodk51evR?si=0Zg2p6AdQKGbgpn5MniWhA\">  عفروتو </a> \n",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX8BiaB5wfzEH"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX8BiaB5wfzEH",
+        "id": "37i9dQZF1DX8BiaB5wfzEH",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f000000035bd8673b300f79b73438f8f7",
+            "width": null
+          }
+        ],
+        "name": "راب رايق",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5NjcxMzE0NywwMDAwMDAwMDYyYTJkNjAzOGQ5N2RkOTZlZjA4ZmE3ZTk3ZjhkZTg5",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX8BiaB5wfzEH/tracks",
+          "total": 50
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX8BiaB5wfzEH"
+      },
+      {
+        "collaborative": false,
+        "description": "أجمد الأوقات مع أجدد المهرجانات💥 كوفر:<a href=\"https://open.spotify.com/artist/2KjiHtx0h8tyJXbg8aYRgu?si=J5QMHvTkTSCKkHrMNchM-A\"> عصام صاصا </a>",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX6hn7LleMPUw"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX6hn7LleMPUw",
+        "id": "37i9dQZF1DX6hn7LleMPUw",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f000000039c3dfb099a3fd1a7f246b074",
+            "width": null
+          }
+        ],
+        "name": "مهرجانات جديدة",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5ODMzMzY3MywwMDAwMDAwMDg3NmEyMjExMWYxY2U4NGE3NzhiNGFiNjQ5M2YxYTVm",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX6hn7LleMPUw/tracks",
+          "total": 50
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX6hn7LleMPUw"
+      },
+      {
+        "collaborative": false,
+        "description": "أحدث الأغاني المصرية هنا🤩 الغلاف:<a href=\"https://open.spotify.com/artist/2KJgliIl1dMyeOMyCcnYv7?si=3qmWiryeQw2ebI-jOFrEVA\"> بهاء سلطان </a>",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWXJnW46G73SM"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWXJnW46G73SM",
+        "id": "37i9dQZF1DWXJnW46G73SM",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f000000032372a50787d83f87396f0971",
+            "width": null
+          }
+        ],
+        "name": "مصري جديد",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5ODUwMDk1OCwwMDAwMDAwMDY2ZDUxNTFhOWE3ZDZiMzg4YWNkZjk5NTY5MGFkZDg5",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWXJnW46G73SM/tracks",
+          "total": 75
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DWXJnW46G73SM"
+      },
+      {
+        "collaborative": false,
+        "description": "ارجع بالزمن مع أحلى الأغاني المصرية.\n غلاف: <a href=\"https://open.spotify.com/artist/7AuBGlcUaHok37yr6u963C?si=sfCYT7HRSE6Y3O0PUyo-Jg\"> إيهاب توفيق</a>",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX4NRPrbtVmnT"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX4NRPrbtVmnT",
+        "id": "37i9dQZF1DX4NRPrbtVmnT",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000003d3ccacc5defc48e09a7779b9",
+            "width": null
+          }
+        ],
+        "name": "نوستالچيا",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5NDc5MzU3MywwMDAwMDAwMDMwYzFjOWIwYmZlOGI1NTUzMWVmNTQ2NjgzZWMxZjE4",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX4NRPrbtVmnT/tracks",
+          "total": 120
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX4NRPrbtVmnT"
+      },
+      {
+        "collaborative": false,
+        "description": "This is Essam Sasa. The essential tracks, all in one playlist.",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO1A03o5"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DZ06evO1A03o5",
+        "id": "37i9dQZF1DZ06evO1A03o5",
+        "images": [
+          {
+            "height": null,
+            "url": "https://thisis-images.spotifycdn.com/37i9dQZF1DZ06evO1A03o5-large.jpg",
+            "width": null
+          }
+        ],
+        "name": "This Is Essam Sasa",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MjgzMDg0NDgsMDAwMDAwMDA4ZjY1YTkxMmUzMGM3YjJjNTNlZTllOTA4MGI0ZDNhMQ==",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DZ06evO1A03o5/tracks",
+          "total": 51
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DZ06evO1A03o5"
+      },
+      {
+        "collaborative": false,
+        "description": "أفضل الأغاني الشعبية من قلب مصر! غلاف:<a href=\"https://open.spotify.com/artist/5jii08sWD8V92EdOofQo52?si=v7EAopWETMqME3LXKcLsdw\">  مصطفى حجاج </a>",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX7Gwi28HhdBP"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX7Gwi28HhdBP",
+        "id": "37i9dQZF1DX7Gwi28HhdBP",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f0000000355e3fb1afd2f5c086c031c16",
+            "width": null
+          }
+        ],
+        "name": "شعبي مصري",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5ODMzMzM1NywwMDAwMDAwMDRiZmIwNDE4ZDY2ZjRlMWUxOTU2ZDJmMGVhNmZjMzA5",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX7Gwi28HhdBP/tracks",
+          "total": 50
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX7Gwi28HhdBP"
+      },
+      {
+        "collaborative": false,
+        "description": "أغاني لأقوى تمرينة 💪",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX1fzTwl8xjJf"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX1fzTwl8xjJf",
+        "id": "37i9dQZF1DX1fzTwl8xjJf",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f000000035353886459b6832a8bb4c90a",
+            "width": null
+          }
+        ],
+        "name": "عاش يا وحش",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5NjMyOTAyNywwMDAwMDAwMDBhOGZkNjcwZGE0ZWJlZDlmN2U1MmMzZjkyZDFhNWEz",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX1fzTwl8xjJf/tracks",
+          "total": 120
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX1fzTwl8xjJf"
+      },
+      {
+        "collaborative": false,
+        "description": "😎☀️أغاني وبحر ورملة وساحل",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX2biq33wM0Xh"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX2biq33wM0Xh",
+        "id": "37i9dQZF1DX2biq33wM0Xh",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000003d54a2ab048ff4b5dd91ec1dc",
+            "width": null
+          }
+        ],
+        "name": "مزيكا الساحل",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5MzU2OTc4OCwwMDAwMDAwMDBlN2MwMjcxZWUwMGJmZGM2ZWRjM2ZiZGY0NTY4NDFh",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX2biq33wM0Xh/tracks",
+          "total": 100
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX2biq33wM0Xh"
+      },
+      {
+        "collaborative": false,
+        "description": "Find out the hottest tracks in Egypt. Cover: <a href=\"https://open.spotify.com/artist/2BBnFUgIaLHqoRYPfshoPb?si=Z4LDDLAhTB68Wv48TKIRtw\">  Marwan Moussa </a>",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX50MDbDwt4w8"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX50MDbDwt4w8",
+        "id": "37i9dQZF1DX50MDbDwt4w8",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f00000003dd54c8f0d6b25bf53a1ae30f",
+            "width": null
+          }
+        ],
+        "name": "Hot Hits Egypt",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5ODMzMzI1MywwMDAwMDAwMDE2OWY0ZTUzMGNmODMyZmQ1ZmM3OWFlZDIzZWJkMTI2",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX50MDbDwt4w8/tracks",
+          "total": 50
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX50MDbDwt4w8"
+      },
+      {
+        "collaborative": false,
+        "description": "أقوى أغاني الصيف 🔥🏖️🍍 كوفر: <a href=\"https://open.spotify.com/artist/6bb9VI1PpPTEmdgcgjTppX?si=RkwcpP1mTNy2fTRWU_z0kQ\"> حماقي  </a>",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX3BDF0kuudi6"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX3BDF0kuudi6",
+        "id": "37i9dQZF1DX3BDF0kuudi6",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f0000000332db410ba877f49971c8c848",
+            "width": null
+          }
+        ],
+        "name": "Hits صيف",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5MjI5ODY2MSwwMDAwMDAwMGQ1YzRlZWQyNDljZjM4N2FmN2VhNWQ2Y2I5NWUxZGEz",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX3BDF0kuudi6/tracks",
+          "total": 50
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX3BDF0kuudi6"
+      },
+      {
+        "collaborative": false,
+        "description": "خليك ريلاكس وفوكس 🎧💡\n\n\n\n",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DXasUrKjiCTSW"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXasUrKjiCTSW",
+        "id": "37i9dQZF1DXasUrKjiCTSW",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f0000000342815ae86832b1188bd8e021",
+            "width": null
+          }
+        ],
+        "name": "وقت التركيز",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5ODMzMjI1NSwwMDAwMDAwMDIxZTk2MjJiODAzMWYwN2VlOGFjMjI2YWU0ZjRjMTgy",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXasUrKjiCTSW/tracks",
+          "total": 41
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DXasUrKjiCTSW"
+      },
+      {
+        "collaborative": false,
+        "description": "This is Amr Diab. The essential tracks, all in one playlist.",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO32byzj"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DZ06evO32byzj",
+        "id": "37i9dQZF1DZ06evO32byzj",
+        "images": [
+          {
+            "height": null,
+            "url": "https://thisis-images.spotifycdn.com/37i9dQZF1DZ06evO32byzj-large.jpg",
+            "width": null
+          }
+        ],
+        "name": "This Is Amr Diab",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MjgzMDg0NDgsMDAwMDAwMDBmODVkOTQ3NGQ4NWQzODI3YjIwZjQ5NTFhYzQ0ZDhjOQ==",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DZ06evO32byzj/tracks",
+          "total": 50
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DZ06evO32byzj"
+      },
+      {
+        "collaborative": false,
+        "description": "أحلى الأغاني ليوم فرحك 🤍",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWXtn4mSM1Su9"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWXtn4mSM1Su9",
+        "id": "37i9dQZF1DWXtn4mSM1Su9",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f000000034dc2a690a99bb18e503c5489",
+            "width": null
+          }
+        ],
+        "name": "فرحة بتجمعنا",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5NjMxODU0MSwwMDAwMDAwMGMzZmE3YjlhYjg1OWFhMDgxYzM2NjJlYzJmNzYzOTRl",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWXtn4mSM1Su9/tracks",
+          "total": 75
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DWXtn4mSM1Su9"
+      },
+      {
+        "collaborative": false,
+        "description": "مهرجانات متتنسيش. غلاف: الصواريخ",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX0SLQoNWt666"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX0SLQoNWt666",
+        "id": "37i9dQZF1DX0SLQoNWt666",
+        "images": [
+          {
+            "height": null,
+            "url": "https://i.scdn.co/image/ab67706f000000034e0101fe7272a7ac9702f611",
+            "width": null
+          }
+        ],
+        "name": "مهرجانات على بالي",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTY5MzQwNzAzMSwwMDAwMDAwMDcwNDAyZmI3OWQ0M2U0MWQ2ZTRlZDk1MGFiMTU5MTM3",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX0SLQoNWt666/tracks",
+          "total": 100
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:37i9dQZF1DX0SLQoNWt666"
+      }
+    ],
+    "limit": 50,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 24
+  }
+}
