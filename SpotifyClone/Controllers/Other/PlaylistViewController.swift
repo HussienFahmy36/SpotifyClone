@@ -10,6 +10,7 @@ import UIKit
 class PlaylistViewController: UIViewController {
 
     private let playlist: Playlist
+    private var tracks = [AudioTrack]()
     private var playlistDetailsResponse: PlaylistDetailsResponse?
     private var viewModels: [RecommendedTrackCellViewModel] = []
     
@@ -46,6 +47,7 @@ class PlaylistViewController: UIViewController {
         APICaller.shared.getPlaylistDetails(for: playlist) {[unowned self] result in
             switch result {
             case .success(let model):
+                self.tracks = model.tracks.items.map { $0.track }
                 self.playlistDetailsResponse = model
                 self.configureViewModels()
                 DispatchQueue.main.async {
@@ -86,6 +88,13 @@ class PlaylistViewController: UIViewController {
 }
 
 extension PlaylistViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = indexPath.row
+        let track = tracks[index]
+        PlaybackPresenter.shared.startPlayback(from: self, track: track)
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
@@ -118,5 +127,6 @@ extension PlaylistViewController: UICollectionViewDataSource, UICollectionViewDe
 
 extension PlaylistViewController: PlaylistHeaderCollectionReusableViewDelegate {
     func playlistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
+        PlaybackPresenter.shared.startPlayback(from: self, tracks: tracks)
     }
 }

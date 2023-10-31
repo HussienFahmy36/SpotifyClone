@@ -20,6 +20,8 @@ class AlbumViewController: UIViewController {
     
     private var viewModels: [AlbumCellViewModel] = []
     private let album: Album
+    private var tracks: [AudioTrack] = []
+    
     init(album: Album) {
         self.album = album
         super.init(nibName: nil, bundle: nil)
@@ -53,6 +55,7 @@ class AlbumViewController: UIViewController {
         APICaller.shared.getAlbumDetails(for: album) {[unowned self] result in
             switch result {
             case .success(let model):
+                self.tracks = model.tracks.items
                 self.albumDetailsResponse = model
                 self.configureViewModels()
                 DispatchQueue.main.async {
@@ -113,12 +116,19 @@ extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDeleg
         guard let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier, for: indexPath) as? PlaylistHeaderCollectionReusableView else {
             return UICollectionViewCell()
         }
+        cell.delegate = self
         cell.configure(with: PlaylistHeaderCollectionViewModel(name: album.name, description: "Release date: \(album.release_date.toFormattedDate())", owner: album.artists[0].name, poster_URL: URL(string: album.images[0].url)))
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        PlaybackPresenter.shared.startPlayback(from: self, track: tracks[indexPath.row])
     }
 }
 
 extension AlbumViewController: PlaylistHeaderCollectionReusableViewDelegate {
     func playlistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
+        PlaybackPresenter.shared.startPlayback(from: self, tracks: tracks)
     }
 }

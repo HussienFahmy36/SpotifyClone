@@ -146,7 +146,7 @@ extension SearchViewController: SearchResultsViewControllerDelegate {
             let vc = PlaylistViewController(playlist: playlist)
             resultViewController = vc
         case .track(let track):
-            break
+            PlaybackPresenter.shared.startPlayback(from: self, track: track)
         }
         guard let resultViewController else { return }
         resultViewController.navigationItem.largeTitleDisplayMode = .never

@@ -378,7 +378,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             self.navigationController?.pushViewController(albumVC, animated: true)
             
         case .recommendedTracks:
-            break
+            let track = tracks[indexPath.row]
+            PlaybackPresenter.shared.startPlayback(from: self, track: track)
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
