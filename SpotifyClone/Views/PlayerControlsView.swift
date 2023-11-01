@@ -11,9 +11,16 @@ protocol PlayerControlsViewDelegate: AnyObject {
     func playerControlsViewDidTapPlayPause(_ playerControlsView: PlayerControlsView)
     func playerControlsViewDidTapForward(_ playerControlsView: PlayerControlsView)
     func playerControlsViewDidTapBackward(_ playerControlsView: PlayerControlsView)
+    func playerControlsView(_ playerControlsView: PlayerControlsView, didSlideSlider value: Float)
+}
+
+struct PlayerControlsViewModel {
+    let title: String?
+    let subtitle: String?
 }
 
 final class PlayerControlsView: UIView {
+    private var isPlaying = true
     private let volumeSlider: UISlider = {
         let slider = UISlider()
         slider.value = 0.5
@@ -80,6 +87,7 @@ final class PlayerControlsView: UIView {
         addSubview(playPauseButtonButton)
         
         addSubview(volumeSlider)
+        volumeSlider.addTarget(self, action: #selector(didSlideSlider(_:)), for: .valueChanged)
         
         clipsToBounds = true
         
@@ -88,6 +96,11 @@ final class PlayerControlsView: UIView {
         forwardButton.addTarget(self, action: #selector(forwardTappedAction), for: .touchUpInside)
 
         addConstraints()
+    }
+    
+    @objc private func didSlideSlider(_ slider: UISlider) {
+        let value = slider.value
+        delegate?.playerControlsView(self, didSlideSlider: value)
     }
     
     private func addConstraints() {
@@ -132,6 +145,11 @@ final class PlayerControlsView: UIView {
         NSLayoutConstraint.activate(playPauseButtonConstraints)
     }
     
+    public func configure(with viewModel: PlayerControlsViewModel) {
+        nameLabel.text = viewModel.title
+        subtitleLabel.text = viewModel.subtitle
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -145,7 +163,14 @@ final class PlayerControlsView: UIView {
     }
     
     @objc private func playPauseTappedAction() {
+        isPlaying = !isPlaying
         delegate?.playerControlsViewDidTapPlayPause(self)
+        
+        let pauseImage = UIImage(systemName: "pause", withConfiguration: UIImage.SymbolConfiguration(pointSize: 34, weight: .regular))
+
+        let playImage = UIImage(systemName: "play.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 34, weight: .regular))
+
+        playPauseButtonButton.setImage(isPlaying ? pauseImage : playImage, for: .normal)
     }
 
     @objc private func forwardTappedAction() {
