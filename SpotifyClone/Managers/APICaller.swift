@@ -297,6 +297,82 @@ class APICaller {
             }
     }
     
+    public func getCurrentUserPlaylists(completion: @escaping (Result<[Playlist], Error>) -> Void) {
+        createRequest(
+            with: URL(string: Constants.base_API_Url + "/me/playlists?limit=50"),
+            type: .GET) { request in
+                let task = URLSession.shared.dataTask(with: request) {[unowned self] data, _, error in
+                    guard let data, error == nil else {
+                        completion(.failure(APIError.failedToGetData))
+                        return
+                    }
+                    let results = self.jsonDecode(data: data, to: PlaylistResponse.self)
+                    switch results {
+                    case .success(let response):
+                        completion(.success(response.items))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
+                task.resume()
+            }
+    }
+    
+    public func createPlaylists(with name: String, completion: @escaping (Bool) -> Void) {
+        getCurrentUserProfile {[unowned self] result in
+            switch result {
+                
+            case .success(let profile):
+                let urlString = Constants.base_API_Url + "/users/\(profile.id)/playlists"
+                self.createRequest(
+                    with: URL(string: urlString),
+                    type: .POST) { baseRequest in
+                        
+                        var request = baseRequest
+                        let json = [
+                            "name": name
+                        ]
+                        
+                        request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed)
+                        
+                        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                            guard let data, error == nil else {
+                                completion(false)
+                                return
+                            }
+                            do {
+                                let json = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+                                if let response = json as? [String: Any], response["id"] as? String != nil {
+                                    print("Created")
+                                    completion(true)
+                                } else {
+                                    print("ERrror whiel creation")
+                                    completion(false)
+                                }
+                            } catch {
+                                completion(false)
+                            }
+                        }
+                        
+                        task.resume()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    public func addTrackToPlaylist(
+        _ track: AudioTrack,
+        to playlist: Playlist,
+        completion: @escaping (Bool) -> Void) {
+        
+    }
+    public func removeTrackFromPlaylist(
+        _ track: AudioTrack,
+        to playlist: Playlist,
+        completion: @escaping (Bool) -> Void) {
+        
+    }
     private func jsonDecode<T: Decodable>(data: Data, to objectType: T.Type) -> Result<T, Error> {
         do {
             let result = try JSONDecoder().decode(objectType, from: data)

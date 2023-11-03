@@ -120,7 +120,11 @@ extension PlaylistViewController: UICollectionViewDataSource, UICollectionViewDe
             return UICollectionViewCell()
         }
         cell.delegate = self
-        cell.configure(with: PlaylistHeaderCollectionViewModel(name: playlist.name, description: playlist.description, owner: playlist.owner.display_name, poster_URL: URL(string: playlist.images[0].url)))
+        cell.configure(with: PlaylistHeaderCollectionViewModel(name: playlist.name, description: playlist.description, owner: playlist.owner.display_name, poster_URL:
+                                                                playlist.images.isEmpty ?
+                                                                nil :
+                                                                URL(string: playlist.images[0].url)
+                                                                ))
         return cell
     }
 }

@@ -55,6 +55,7 @@ class PlayerViewController: UIViewController {
                                     subtitle: dataSource?.subtitle
                                 )
         )
+        title = dataSource?.songName
     }
     
     private func configureBarButtons() {

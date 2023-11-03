@@ -80,7 +80,7 @@ class PlaylistHeaderCollectionReusableView: UICollectionViewCell {
         nameLabel.text = viewModel.name
         descriptionLabel.text = viewModel.description
         ownerNameLabel.text = viewModel.owner
-        playListCoverImage.sd_setImage(with: viewModel.poster_URL)
+        playListCoverImage.sd_setImage(with: viewModel.poster_URL, placeholderImage: UIImage(systemName: "photo"))
     }
     
     required init?(coder: NSCoder) {

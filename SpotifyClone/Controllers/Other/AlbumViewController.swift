@@ -55,7 +55,11 @@ class AlbumViewController: UIViewController {
         APICaller.shared.getAlbumDetails(for: album) {[unowned self] result in
             switch result {
             case .success(let model):
-                self.tracks = model.tracks.items
+                for index in 0..<model.tracks.items.count {
+                    var track = model.tracks.items[index]
+                    track.poster_URL = URL(string: model.images[0].url)
+                    self.tracks.append(track)
+                }
                 self.albumDetailsResponse = model
                 self.configureViewModels()
                 DispatchQueue.main.async {

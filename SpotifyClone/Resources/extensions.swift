@@ -57,3 +57,9 @@ extension UIImageView {
         clipsToBounds = true
     }
 }
+
+extension String {
+    var toURL: URL? {
+        URL(string: self)
+    }
+}

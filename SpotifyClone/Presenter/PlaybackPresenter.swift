@@ -44,7 +44,6 @@ final class PlaybackPresenter {
         self.tracks = []
         let vc = PlayerViewController()
         vc.delegate = self
-        vc.title = track.name
         vc.dataSource = self
         viewController.present(UINavigationController(rootViewController: vc), animated: true){ [weak self] in
             self?.player.play()
@@ -69,7 +68,7 @@ final class PlaybackPresenter {
         vc.dataSource = self
         vc.delegate = self
         player = AVPlayer(playerItem: playItems[0])
-        viewController.present(vc, animated: true) { [weak self] in
+        viewController.present(UINavigationController(rootViewController: vc), animated: true) { [weak self] in
             self?.player.play()
         }
     }
@@ -85,7 +84,9 @@ extension PlaybackPresenter: PlayerDataSource {
     }
     
     var imageURL: URL? {
-        URL(string: currentTrack?.album?.images[0].url ?? "")
+        var posterURL: URL?
+        posterURL = (currentTrack?.album?.images != nil) ?  URL(string: currentTrack?.album?.images[0].url ?? "") : currentTrack?.poster_URL
+        return posterURL
     }
 }
 
