@@ -40,6 +40,7 @@ class PlaylistViewController: UIViewController {
         tracksCollectionView.dataSource = self
         tracksCollectionView.delegate = self
         fetchData()
+        addLongPressGesture()
     }
     
     private func fetchData() {
@@ -85,6 +86,43 @@ class PlaylistViewController: UIViewController {
         ]
         return section
     }
+    
+    private func addLongPressGesture() {
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressOnTrack))
+        tracksCollectionView.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc private func didLongPressOnTrack(_ gesture: UILongPressGestureRecognizer) {
+        guard gesture.state == .began else {
+            return
+        }
+        let touchPoint = gesture.location(in: tracksCollectionView)
+        guard let indexPath = tracksCollectionView.indexPathForItem(at: touchPoint) else { return }
+        let trackToDelete = tracks[indexPath.row]
+        deleteTrack(trackToDelete, at: indexPath)
+    }
+    
+    private func deleteTrack(_ trackToDelete: AudioTrack,at indexPath: IndexPath) {
+        presentActionSheetForDeletion(trackToDelete, at: indexPath)
+    }
+    
+    private func presentActionSheetForDeletion(_ track: AudioTrack, at indexPath: IndexPath) {
+        let actionSheet = UIAlertController(title: track.name, message: "Are you sure you want to remove this track?", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {[unowned self] action in
+            self.showLoadingIndicator()
+            APICaller.shared.removeTrackFromPlaylist(track, to: playlist) { result in
+                if result {
+                    DispatchQueue.main.async {
+                        self.viewModels.remove(at: indexPath.row)
+                        self.tracksCollectionView.deleteItems(at: [indexPath])
+                        self.hideLoadingIndicator()
+                    }
+                }
+            }
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(actionSheet, animated: true)
+    }
 }
 
 extension PlaylistViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -94,6 +132,7 @@ extension PlaylistViewController: UICollectionViewDataSource, UICollectionViewDe
         let track = tracks[index]
         PlaybackPresenter.shared.startPlayback(from: self, track: track)
     }
+    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1

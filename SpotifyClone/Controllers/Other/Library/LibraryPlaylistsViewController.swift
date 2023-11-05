@@ -29,6 +29,8 @@ class LibraryPlaylistsViewController: UIViewController {
         return tableView
     }()
         
+    public var selectionHandler: ((Playlist) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -72,7 +74,11 @@ class LibraryPlaylistsViewController: UIViewController {
         guard !playlists.isEmpty else {
             return
         }
-        viewModels = playlists.map { SearchResultSubtitleTableViewCellViewModel(title: $0.name, subtitle: $0.owner.display_name, imageURL: nil)}
+        viewModels = playlists.map { playlist in
+            let url: URL? = !playlist.images.isEmpty ? URL(string: playlist.images[0].url) : nil
+            return SearchResultSubtitleTableViewCellViewModel(title: playlist.name, subtitle: playlist.owner.display_name, imageURL: url)
+            
+        }
     }
     private func addConstraints() {
         let actionViewConstraints = [
@@ -101,7 +107,6 @@ class LibraryPlaylistsViewController: UIViewController {
 
 extension LibraryPlaylistsViewController: ActionViewDelegate {
     func actionViewDidTapActionButton(_ actionView: ActionView) {
-        print("Create button clicked!.")
         showCreatePlaylistAlert()
     }
     
@@ -120,7 +125,7 @@ extension LibraryPlaylistsViewController: ActionViewDelegate {
             else {
                 return
             }
-            
+
             APICaller.shared.createPlaylists(with: text) {[unowned self] success in
                 if success {
                     self.fetchData()
@@ -156,9 +161,14 @@ extension LibraryPlaylistsViewController: UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let playlistVC = PlaylistViewController(playlist: playlists[indexPath.row])
+        let playlist = playlists[indexPath.row]
+        if let selectionHandler {
+            selectionHandler(playlist)
+            dismiss(animated: true)
+            return
+        }
+        let playlistVC = PlaylistViewController(playlist: playlist)
         playlistVC.navigationItem.largeTitleDisplayMode = .never
         self.navigationController?.pushViewController(playlistVC, animated: true)
-
     }
 }

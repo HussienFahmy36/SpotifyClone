@@ -223,6 +223,7 @@ class HomeViewController: UIViewController {
         view.addSubview(collectionView)
         
         fetchData()
+        addLongPressGesture()
     }
     
     override func viewDidLayoutSubviews() {
@@ -334,6 +335,45 @@ class HomeViewController: UIViewController {
         vc.title = "Settings"
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func addLongPressGesture() {
+        let longPressGesture = UILongPressGestureRecognizer(
+            target: self,
+            action: #selector(didLongPressOnTrackCell)
+        )
+        collectionView.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc private func didLongPressOnTrackCell(gesture: UILongPressGestureRecognizer) {
+        guard gesture.state == .began else {
+            return
+        }
+        
+        let touchPoint = gesture.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: touchPoint),
+              indexPath.section == 2 else {
+            return
+        }
+        let model = tracks[indexPath.row]
+        let actionSheet = UIAlertController(
+            title: model.name,
+            message: "Would you like to add this to a playlist?",
+            preferredStyle: .actionSheet
+        )
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Add to Playlist", style: .default, handler: {[unowned self] _ in
+            DispatchQueue.main.async {
+                let vc = LibraryPlaylistsViewController()
+                vc.selectionHandler = { playlist in
+                    APICaller.shared.addTrackToPlaylist(model, to: playlist) { result in
+                        
+                    }
+                }
+                self.present(vc, animated: true)
+            }
+        }))
+        present(actionSheet, animated: true)
     }
 }
 

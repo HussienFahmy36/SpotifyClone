@@ -95,6 +95,7 @@ class APICaller {
     enum HTTPMethod: String {
         case GET
         case POST
+        case DELETE
         
     }
 
@@ -365,12 +366,83 @@ class APICaller {
         _ track: AudioTrack,
         to playlist: Playlist,
         completion: @escaping (Bool) -> Void) {
+            createRequest(
+                with: URL(string: Constants.base_API_Url + "/playlists/\(playlist.id)/tracks"),
+                type: .POST) { baseRequest in
+                    var request = baseRequest
+                    let json = [
+                        "uris": [
+                            "spotify:track:\(track.id)"
+                        ]
+                    ]
+                    request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed)
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                    let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                        guard let data, error == nil else {
+                            completion(false)
+                            return
+                        }
+                        do {
+                            let result = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+                            if let response = result as? [String: Any],
+                               response["snapshot_id"] as? String != nil
+                            {
+                                completion(true)
+                            } else {
+                                completion(false)
+                            }
+                        } catch {
+                            completion(false)
+                        }
+                    }
+                    
+                    task.resume()
+
+                }
         
     }
     public func removeTrackFromPlaylist(
         _ track: AudioTrack,
         to playlist: Playlist,
         completion: @escaping (Bool) -> Void) {
+            createRequest(
+                with: URL(string: Constants.base_API_Url + "/playlists/\(playlist.id)/tracks"),
+                type: .DELETE) { baseRequest in
+                    var request = baseRequest
+                    let json: [String: Any] = [
+                        "uris": [
+                            "spotify:track:\(track.id)"
+                        ],
+                        "snapshot_id": playlist.snapshot_id
+                    ]
+                        
+                        
+                        
+                    
+                    request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed)
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                    let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                        guard let data, error == nil else {
+                            completion(false)
+                            return
+                        }
+                        do {
+                            let result = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+                            if let response = result as? [String: Any],
+                               response["snapshot_id"] as? String != nil
+                            {
+                                completion(true)
+                            } else {
+                                completion(false)
+                            }
+                        } catch {
+                            completion(false)
+                        }
+                    }
+                    
+                    task.resume()
+
+                }
         
     }
     private func jsonDecode<T: Decodable>(data: Data, to objectType: T.Type) -> Result<T, Error> {
