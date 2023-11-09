@@ -18,12 +18,13 @@ class AlbumViewController: UIViewController {
         return collectionView
     }()
     
-    private var viewModels: [AlbumCellViewModel] = []
+    private let audioTracksDisplayStrategy = TracksPlaylistDisplayMinimalStrategy()
+    private let audioTracksDataSource: AlbumsTracksDataSource
     private let album: Album
-    private var tracks: [AudioTrack] = []
     
     init(album: Album) {
         self.album = album
+        audioTracksDataSource = AlbumsTracksDataSource(model: album)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,15 +36,11 @@ class AlbumViewController: UIViewController {
         super.viewDidLoad()
         title = album.name
         view.backgroundColor = .systemBackground
-        
         view.addSubview(tracksCollectionView)
-        tracksCollectionView.register(AlbumCollectionViewCell.self, forCellWithReuseIdentifier: AlbumCollectionViewCell.identifier)
-        tracksCollectionView.register(PlaylistHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier)
+        audioTracksDisplayStrategy.registerCells(in: tracksCollectionView)
         tracksCollectionView.dataSource = self
         tracksCollectionView.delegate = self
-        
         fetchData()
-
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -52,16 +49,9 @@ class AlbumViewController: UIViewController {
     
     private func fetchData() {
         showLoadingIndicator()
-        APICaller.shared.getAlbumDetails(for: album) {[unowned self] result in
+        audioTracksDataSource.fetchTracks { result in
             switch result {
-            case .success(let model):
-                for index in 0..<model.tracks.items.count {
-                    var track = model.tracks.items[index]
-                    track.poster_URL = URL(string: model.images[0].url)
-                    self.tracks.append(track)
-                }
-                self.albumDetailsResponse = model
-                self.configureViewModels()
+            case .success():
                 DispatchQueue.main.async {
                     self.hideLoadingIndicator()
                     self.tracksCollectionView.reloadData()
@@ -70,13 +60,6 @@ class AlbumViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-    }
-
-    private func configureViewModels() {
-        guard let albumDetailsResponse else {
-            return
-        }
-        viewModels = albumDetailsResponse.tracks.items.map { AlbumCellViewModel(name: $0.name, artistName: $0.artists[0].name)}
     }
 
     private static func createLayout() -> NSCollectionLayoutSection {
@@ -101,38 +84,44 @@ extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModels.count
+        audioTracksDataSource.viewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCollectionViewCell.identifier, for: indexPath) as? AlbumCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        let viewModel = viewModels[indexPath.row]
-        cell.configure(with: viewModel)
-        return cell
+        let viewModel = audioTracksDataSource.viewModels[indexPath.row]
+        return audioTracksDisplayStrategy.cellToDisplay(at: indexPath, in: collectionView, viewModel: viewModel)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard kind == UICollectionView.elementKindSectionHeader else {
             return UICollectionViewCell()
         }
-        guard let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier, for: indexPath) as? PlaylistHeaderCollectionReusableView else {
+        let viewModel = PlaylistHeaderCollectionViewModel(
+            name: album.name,
+            description: "Release date: \(album.release_date.toFormattedDate())",
+            owner: album.artists[0].name,
+            poster_URL: URL(string: album.images[0].url)
+        )
+        guard let cell = audioTracksDisplayStrategy.headerViewToDisplay(
+            at: indexPath,
+            in: collectionView,
+            viewModel: viewModel
+        ) as? PlaylistHeaderCollectionReusableView else {
             return UICollectionViewCell()
         }
+
         cell.delegate = self
-        cell.configure(with: PlaylistHeaderCollectionViewModel(name: album.name, description: "Release date: \(album.release_date.toFormattedDate())", owner: album.artists[0].name, poster_URL: URL(string: album.images[0].url)))
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        PlaybackPresenter.shared.startPlayback(from: self, track: tracks[indexPath.row])
+        PlaybackPresenter.shared.startPlayback(from: self, track: audioTracksDataSource.tracks[indexPath.row])
     }
 }
 
 extension AlbumViewController: PlaylistHeaderCollectionReusableViewDelegate {
     func playlistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
-        PlaybackPresenter.shared.startPlayback(from: self, tracks: tracks)
+        PlaybackPresenter.shared.startPlayback(from: self, tracks: audioTracksDataSource.tracks)
     }
 }

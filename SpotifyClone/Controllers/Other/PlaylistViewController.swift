@@ -9,10 +9,9 @@ import UIKit
 
 class PlaylistViewController: UIViewController {
 
-    private let playlist: Playlist
-    private var tracks = [AudioTrack]()
-    private var playlistDetailsResponse: PlaylistDetailsResponse?
-    private var viewModels: [RecommendedTrackCellViewModel] = []
+    private let audioTracksDisplayStrategy = TracksPlaylistDisplayDefaultStrategy()
+    private var audioTracksDataSource: PlaylistTracksDataSource?
+    private var audioTracksAlbumsDataSource: AlbumsTracksDataSource?
     
     private let tracksCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { _, _ -> NSCollectionLayoutSection in
@@ -22,7 +21,12 @@ class PlaylistViewController: UIViewController {
     }()
     
     init(playlist: Playlist) {
-        self.playlist = playlist
+        audioTracksDataSource = PlaylistTracksDataSource(model: playlist)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(album: Album) {
+        audioTracksAlbumsDataSource = AlbumsTracksDataSource(model: album)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,25 +36,22 @@ class PlaylistViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = playlist.name
+        title = audioTracksDataSource?.title ?? ""
         view.backgroundColor = .systemBackground
         view.addSubview(tracksCollectionView)
-        tracksCollectionView.register(RecommendedCollectionViewCell.self, forCellWithReuseIdentifier: RecommendedCollectionViewCell.identifier)
-        tracksCollectionView.register(PlaylistHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier)
+        
+        audioTracksDisplayStrategy.registerCells(in: tracksCollectionView)
+        
         tracksCollectionView.dataSource = self
         tracksCollectionView.delegate = self
         fetchData()
-        addLongPressGesture()
     }
     
     private func fetchData() {
         showLoadingIndicator()
-        APICaller.shared.getPlaylistDetails(for: playlist) {[unowned self] result in
+        audioTracksDataSource?.fetchTracks {[unowned self] result in
             switch result {
-            case .success(let model):
-                self.tracks = model.tracks.items.map { $0.track }
-                self.playlistDetailsResponse = model
-                self.configureViewModels()
+            case .success():
                 DispatchQueue.main.async {
                     self.hideLoadingIndicator()
                     self.tracksCollectionView.reloadData()
@@ -59,13 +60,6 @@ class PlaylistViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    private func configureViewModels() {
-        guard let playlistDetailsResponse else {
-            return
-        }
-        viewModels = playlistDetailsResponse.tracks.items.map { RecommendedTrackCellViewModel(name: $0.track.name, artistName: $0.track.artists[0].name, artworkURL: URL(string: $0.track.album?.images[0].url ?? ""))}
     }
     
     override func viewDidLayoutSubviews() {
@@ -86,51 +80,15 @@ class PlaylistViewController: UIViewController {
         ]
         return section
     }
-    
-    private func addLongPressGesture() {
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressOnTrack))
-        tracksCollectionView.addGestureRecognizer(longPressGesture)
-    }
-    
-    @objc private func didLongPressOnTrack(_ gesture: UILongPressGestureRecognizer) {
-        guard gesture.state == .began else {
-            return
-        }
-        let touchPoint = gesture.location(in: tracksCollectionView)
-        guard let indexPath = tracksCollectionView.indexPathForItem(at: touchPoint) else { return }
-        let trackToDelete = tracks[indexPath.row]
-        deleteTrack(trackToDelete, at: indexPath)
-    }
-    
-    private func deleteTrack(_ trackToDelete: AudioTrack,at indexPath: IndexPath) {
-        presentActionSheetForDeletion(trackToDelete, at: indexPath)
-    }
-    
-    private func presentActionSheetForDeletion(_ track: AudioTrack, at indexPath: IndexPath) {
-        let actionSheet = UIAlertController(title: track.name, message: "Are you sure you want to remove this track?", preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {[unowned self] action in
-            self.showLoadingIndicator()
-            APICaller.shared.removeTrackFromPlaylist(track, to: playlist) { result in
-                if result {
-                    DispatchQueue.main.async {
-                        self.viewModels.remove(at: indexPath.row)
-                        self.tracksCollectionView.deleteItems(at: [indexPath])
-                        self.hideLoadingIndicator()
-                    }
-                }
-            }
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(actionSheet, animated: true)
-    }
 }
 
 extension PlaylistViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.row
-        let track = tracks[index]
-        PlaybackPresenter.shared.startPlayback(from: self, track: track)
+        if let track = audioTracksDataSource?.tracks[index] {
+            PlaybackPresenter.shared.startPlayback(from: self, track: track)
+        }
     }
     
     
@@ -139,37 +97,44 @@ extension PlaylistViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModels.count
+        audioTracksDataSource?.viewModels.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendedCollectionViewCell.identifier, for: indexPath) as? RecommendedCollectionViewCell else {
+        
+        if let viewModel = audioTracksDataSource?.viewModels[indexPath.row] {
+            return audioTracksDisplayStrategy.cellToDisplay(at: indexPath, in: collectionView, viewModel: viewModel)
+        } else {
             return UICollectionViewCell()
         }
-        let viewModel = viewModels[indexPath.row]
-        cell.configure(with: viewModel)
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard kind == UICollectionView.elementKindSectionHeader else {
             return UICollectionViewCell()
         }
-        guard let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier, for: indexPath) as? PlaylistHeaderCollectionReusableView else {
+        if let playlist = audioTracksDataSource?.model {
+            let viewModel = PlaylistHeaderCollectionViewModel(
+                name: playlist.name,
+                description: playlist.description,
+                owner: playlist.owner.display_name,
+                poster_URL: playlist.images.isEmpty ? nil : URL(string: playlist.images[0].url)
+            )
+            guard let cell = audioTracksDisplayStrategy.headerViewToDisplay(at: indexPath, in: collectionView, viewModel: viewModel) as? PlaylistHeaderCollectionReusableView else {
+                return UICollectionViewCell()
+            }
+            cell.delegate = self
+            return cell
+        } else {
             return UICollectionViewCell()
         }
-        cell.delegate = self
-        cell.configure(with: PlaylistHeaderCollectionViewModel(name: playlist.name, description: playlist.description, owner: playlist.owner.display_name, poster_URL:
-                                                                playlist.images.isEmpty ?
-                                                                nil :
-                                                                URL(string: playlist.images[0].url)
-                                                                ))
-        return cell
     }
 }
 
 extension PlaylistViewController: PlaylistHeaderCollectionReusableViewDelegate {
     func playlistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
-        PlaybackPresenter.shared.startPlayback(from: self, tracks: tracks)
+        if let tracks = audioTracksDataSource?.tracks {
+            PlaybackPresenter.shared.startPlayback(from: self, tracks: tracks)
+        }
     }
 }
