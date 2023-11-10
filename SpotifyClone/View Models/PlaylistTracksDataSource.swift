@@ -9,8 +9,6 @@ import Foundation
 
 class PlaylistTracksDataSource: TracksDataSource {
     
-    typealias T = Playlist
-    typealias VM = RecommendedTrackCellViewModel
     
     var tracks: [AudioTrack] = []
     var viewModels: [RecommendedTrackCellViewModel] = []

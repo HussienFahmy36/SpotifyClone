@@ -9,9 +9,6 @@ import Foundation
 
 class AlbumsTracksDataSource: TracksDataSource {
     
-    typealias T = Album
-    typealias VM = AlbumCellViewModel
-    
     var tracks: [AudioTrack] = []
     var viewModels: [AlbumCellViewModel] = []
     var model: Album

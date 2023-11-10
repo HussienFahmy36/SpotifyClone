@@ -36,6 +36,7 @@ class AlbumViewController: UIViewController {
         super.viewDidLoad()
         title = album.name
         view.backgroundColor = .systemBackground
+        
         view.addSubview(tracksCollectionView)
         audioTracksDisplayStrategy.registerCells(in: tracksCollectionView)
         tracksCollectionView.dataSource = self

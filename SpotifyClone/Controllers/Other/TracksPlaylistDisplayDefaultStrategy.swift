@@ -9,6 +9,7 @@ import UIKit
 
 class TracksPlaylistDisplayDefaultStrategy: TracksPlaylistDisplayStrategy {
 
+    var viewModels: [RecommendedTrackCellViewModel] = []
     func registerCells(in collectionView: UICollectionView) {
         collectionView.register(RecommendedCollectionViewCell.self, forCellWithReuseIdentifier: RecommendedCollectionViewCell.identifier)
         collectionView.register(PlaylistHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier)

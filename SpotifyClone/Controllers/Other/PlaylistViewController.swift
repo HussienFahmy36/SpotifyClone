@@ -12,7 +12,6 @@ class PlaylistViewController: UIViewController {
     private let audioTracksDisplayStrategy = TracksPlaylistDisplayDefaultStrategy()
     private var audioTracksDataSource: PlaylistTracksDataSource?
     private var audioTracksAlbumsDataSource: AlbumsTracksDataSource?
-    
     private let tracksCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { _, _ -> NSCollectionLayoutSection in
             return createLayout()

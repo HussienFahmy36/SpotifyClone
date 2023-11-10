@@ -17,5 +17,15 @@ protocol TracksDataSource {
     var model: T { get set }
     
     func fetchTracks(completion: @escaping (Result<Void, Error>) -> Void)
+}
 
+
+class GenericTracksDataSource<Model, ViewModel> {
+    var title: String = ""
+    var viewModels: [ViewModel] = []
+    var tracks: [AudioTrack] = []
+    var model: Model?
+    
+    func fetchTracks(completion: @escaping (Result<Void, Error>) -> Void) {
+    }
 }
